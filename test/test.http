@@ -1,0 +1,18 @@
+POST http://localhost:5000/sendmail
+content-type: application/json; charset=utf-8
+
+{
+  "From": {
+    "Name": "noname",
+    "Address": "11@11.11"
+  },
+  "To": [
+    {
+      "Address": "11@11.11"
+    }
+  ],
+  "Subject": "테스트 {{$localDatetime rfc1123}}",
+  "Body": "한글이 잘나옵니까?\nTürkçe biliyor musun?\n日本語がよく出ます。\n你会说流利的中文吗？\nBạn có thể nói tiếng Việt tốt không?\nक्या आप हिंदी में धाराप्रवाह हैं?\nهل تجيد اللغة العربية؟",
+  "IsBodyHtml": false
+}
+###
