@@ -10,6 +10,7 @@ using NJsonSchema;
 using WebApi.Dto;
 using NJsonSchema.Validation.FormatValidators;
 using NJsonSchema.Validation;
+using System.Net.Http;
 
 namespace WebApi.Controllers
 {
@@ -154,6 +155,12 @@ namespace WebApi.Controllers
 }");
             var errors = string.Join('\n', schema.Validate(json.GetRawText()));
             Console.WriteLine($"{errors}");
+
+            HttpClient httpClient = new HttpClient();
+            await httpClient.PostAsync("http://localhost:5000/typedsendmail", 
+            {
+                Headers = ""
+            });
             return unit;
         }
     }
